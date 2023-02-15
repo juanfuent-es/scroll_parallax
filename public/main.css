@@ -6,6 +6,17 @@
     font-stretch: 75% 125%;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    min-height: 100vh;
+}
+
 body {
 	padding: 0;
 	margin: 0;
@@ -26,6 +37,14 @@ h1, h2, h3, h4, h5, h6 {
     mix-blend-mode: difference;
 }
 
+body {
+    overflow-y: scroll;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
 section {
     text-align: center;
     height: 100vh;
@@ -36,9 +55,9 @@ section {
     align-content: center;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     overflow: hidden;
     position: relative;
+    scroll-snap-align: start;
 }
 
 img {
