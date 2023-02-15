@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger)
 let proxy = {
         y: 0
     },
-    skewSetter = gsap.quickSetter(".big-title", "y", "px"), // fast
+    skewSetter = gsap.quickSetter(".title", "y", "px"), // fast
     clamp = gsap.utils.clamp(-100, 100); // don't let the skew go beyond 20 degrees. 
 
 ScrollTrigger.create({
@@ -31,7 +31,7 @@ ScrollTrigger.create({
     }
 })
 
-gsap.utils.toArray(".lorem").forEach((lorem, i) => {
+gsap.utils.toArray(".sub-title").forEach((lorem, i) => {
     gsap.fromTo(lorem, {
         y: 60,
         opacity: 0,
@@ -49,19 +49,19 @@ gsap.utils.toArray(".lorem").forEach((lorem, i) => {
     })
 });
 
-// make the right edge "stick" to the scroll bar. force3D: true improves performance
-gsap.set(".big-title", {
-    transformOrigin: "right center",
+gsap.set(".title", {
+    transformOrigin: "center center",
     force3D: true
 });
 
 let getRatio = el => window.innerHeight / (window.innerHeight + el.offsetHeight);
 
 gsap.utils.toArray("section").forEach((section, i) => {
-    gsap.fromTo(section, {
-        backgroundPosition: () => i ? `50% ${-window.innerHeight * getRatio(section)}px` : "50% 0px"
+    const img = section.querySelector("img")
+    gsap.fromTo(img, {
+        y: () => i ? `${-window.innerHeight * getRatio(section)}px` : "0px"
     }, {
-        backgroundPosition: () => `50% ${window.innerHeight * (1 - getRatio(section))}px`,
+        y: () => `${window.innerHeight * (1 - getRatio(section))}px`,
         ease: "none",
         scrollTrigger: {
             trigger: section,
