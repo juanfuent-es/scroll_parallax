@@ -1,0 +1,53 @@
+@font-face {
+	src: url('https://res.cloudinary.com/losrodriguez/raw/upload/v1670565861/Hubot-Sans_xy9zmr.woff2') format('woff2 supports variations'),
+        url('https://res.cloudinary.com/losrodriguez/raw/upload/v1670565861/Hubot-Sans_xy9zmr.woff2') format('woff2-variations');
+	font-family: 'Hubot Sans';
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: #000;
+    color: #FFF;
+	font-family: 'Hubot Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+    font-size: 18px;
+    background: radial-gradient(#100d8f, #0d1117 85%);
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeSpeed;
+    font-variation-settings: 'wght' 900, 'wdth' 125;
+    line-height: 1em;
+}
+
+header {
+    text-align: center;
+    height: 60vh;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 90px;
+    text-transform: uppercase;
+}
+
+h1 + p {
+    font-variation-settings: 'wght' 200, 'wdth' 125;
+    text-transform: uppercase;
+}
+
+header small {
+    display: block;
+    text-transform: none;
+}

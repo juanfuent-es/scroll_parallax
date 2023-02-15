@@ -9,7 +9,8 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
-    "date-fns": "^2.16.1"
+    "date-fns": "^2.16.1",
+    "gsap": "^3.11.4"
   },
   "scripts": {
     "build": "rollup -c",
