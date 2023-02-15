@@ -59,30 +59,14 @@ section {
     min-height: 100vh;
 }
 
-h1 {
-    font-size: 90px;
-    text-transform: uppercase;
-}
-
-p {
-    margin: 0 auto;
-    width: 80%;
-    min-width: 290px;
-    max-width: 900px;
-    background-color: rgba(255, 255, 255, .35);
-    border-radius: 1em;
-    padding: 1.5em 1em;
-    backdrop-filter: blur(10px);
-    z-index: 1;
-    position: relative;
-    color: black;
-}
-header small {
-    display: block;
-    text-transform: none;
-}
-
-.big-title {
+.title {
     font-size: 10vw;
     text-transform: uppercase;
+}
+
+.sub-title {
+    font-size: 2.5vw;
+    font-variation-settings: 'wght' 600, 'wdth' 100;
+    line-height: 1em;
+    margin: 0;
 }

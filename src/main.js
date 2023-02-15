@@ -31,24 +31,6 @@ ScrollTrigger.create({
     }
 })
 
-
-ScrollTrigger.create({
-    onUpdate: (self) => {
-        let y = clamp(self.getVelocity() / -300);
-        if (Math.abs(y) > Math.abs(proxy.y)) {
-            proxy.y = y;
-            gsap.to(proxy, {
-                y: 0,
-                duration: 0.8,
-                ease: Power2.easeOut,
-                overwrite: true,
-                onUpdate: () => skewSetter(proxy.y)
-            });
-        }
-    }
-})
-
-
 gsap.utils.toArray(".lorem").forEach((lorem, i) => {
     gsap.fromTo(lorem, {
         y: 60,
@@ -61,7 +43,8 @@ gsap.utils.toArray(".lorem").forEach((lorem, i) => {
         scrollTrigger: {
             trigger: lorem,
             scrub: true,
-            invalidateOnRefresh: true // to make it responsive
+            invalidateOnRefresh: true,
+            onUpdate: () => skewSetter(proxy.y)
         }
     })
 });
