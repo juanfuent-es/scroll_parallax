@@ -51,6 +51,7 @@ section {
 }
 
 img {
+    transform: scale(2);
     max-width: 100%;
     position: absolute;
     width: 100%;
