@@ -20,7 +20,6 @@ html {
 body {
 	padding: 0;
 	margin: 0;
-	overflow-x: hidden;
 	background-color: #000;
     color: #FFF;
 	font-family: 'Hubot Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -37,14 +36,6 @@ h1, h2, h3, h4, h5, h6 {
     mix-blend-mode: difference;
 }
 
-body {
-    overflow-y: scroll;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-}
-
 section {
     text-align: center;
     height: 100vh;
@@ -57,7 +48,6 @@ section {
     justify-content: center;
     overflow: hidden;
     position: relative;
-    scroll-snap-align: start;
 }
 
 img {
