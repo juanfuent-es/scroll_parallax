@@ -1,53 +1,40 @@
 import {
     gsap,
-    Power2
+    Back
 } from "gsap"
 
 import {
     ScrollTrigger
 } from "gsap/all"
+import { pipe } from "gsap"
 
 gsap.registerPlugin(ScrollTrigger)
 
-let proxy = {
-        y: 0
-    },
-    skewSetter = gsap.quickSetter(".title", "y", "px"), // fast
-    clamp = gsap.utils.clamp(-100, 100); // don't let the skew go beyond 20 degrees. 
+let object = {
+    y: 0
+}
+let ySetter = gsap.quickSetter(".title", "y", "px")
+let clamp = gsap.utils.clamp(-60, 60)
+// const setScaleX = gsap.quickSetter(".title", "scaleX")
+// const setScaleY = gsap.quickSetter(".title", "scaleY")
 
 ScrollTrigger.create({
     onUpdate: (self) => {
-        let y = clamp(self.getVelocity() / -300);
-        if (Math.abs(y) > Math.abs(proxy.y)) {
-            proxy.y = y;
-            gsap.to(proxy, {
+        let y = clamp(self.getVelocity() / -100)
+        if (Math.abs(y) > Math.abs(object.y)) {
+            object.y = y
+            gsap.to(object, {
                 y: 0,
-                duration: 0.8,
-                ease: Power2.easeOut,
+                duration: 1.2,
+                ease: Back.easeOut,
                 overwrite: true,
-                onUpdate: () => skewSetter(proxy.y)
-            });
+                scrub: true,
+                onUpdate: () => ySetter(object.y)
+                // onUpdate: () => ySetter(object.y)
+            })
         }
     }
 })
-
-gsap.utils.toArray(".sub-title").forEach((lorem, i) => {
-    gsap.fromTo(lorem, {
-        y: 60,
-        opacity: 0,
-        overwrite: true,
-    }, {
-        y: 0,
-        opacity: 1,
-        overwrite: true,
-        scrollTrigger: {
-            trigger: lorem,
-            scrub: true,
-            invalidateOnRefresh: true,
-            onUpdate: () => skewSetter(proxy.y)
-        }
-    })
-});
 
 gsap.set(".title", {
     transformOrigin: "center center",
@@ -59,10 +46,14 @@ let getRatio = el => window.innerHeight / (window.innerHeight + el.offsetHeight)
 gsap.utils.toArray("section").forEach((section, i) => {
     const img = section.querySelector("img")
     gsap.fromTo(img, {
-        y: () => i ? `${-window.innerHeight * getRatio(section)}px` : "0px"
+        y: () => i ? `${-window.innerHeight * getRatio(section)}px` : "0px",
+        scaleX: 2,
+        scaleY: 2
     }, {
         y: () => `${window.innerHeight * (1 - getRatio(section))}px`,
         ease: "none",
+        scaleX: 1,
+        scaleY: 1,
         scrollTrigger: {
             trigger: section,
             start: () => i ? "top bottom" : "top top",
