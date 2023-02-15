@@ -9,6 +9,7 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^0.2.28",
     "date-fns": "^2.16.1",
     "gsap": "^3.11.4"
   },

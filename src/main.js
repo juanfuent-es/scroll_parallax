@@ -1,14 +1,25 @@
+import Lenis from '@studio-freight/lenis'
 import {
     gsap,
     Back
 } from "gsap"
-
 import {
     ScrollTrigger
 } from "gsap/all"
-import { pipe } from "gsap"
 
 gsap.registerPlugin(ScrollTrigger)
+
+let lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+    direction: 'vertical', // vertical, horizontal
+    gestureDirection: 'vertical', // vertical, horizontal, both
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+})
 
 let object = {
     y: 0
@@ -64,3 +75,10 @@ gsap.utils.toArray("section").forEach((section, i) => {
     });
 
 });
+
+function animate(time) {
+    requestAnimationFrame(animate)
+    lenis.raf(time)
+}
+
+animate()
